@@ -1,0 +1,64 @@
+# We will permit access from local networks OR if cookie
+# is present.
+Satisfy Any
+Allow from 192.168.0.0/16
+
+# MANDATORY. Tells apache that only valid users are
+# allowed. Please refer to the apache manual to get more
+# information about possible options for "require".
+Require valid-user
+
+<IfModule mod_auth_cookie_mysql.c>
+# Configuration for use with mod_auth_cookie_mysql
+AuthType                      Cookie
+
+# Enable the module 
+AuthCookieSql                 On
+
+# OPTIONAL. Redirect here if cookie is not found
+AuthCookieSql_FailureURL      http://example.com/login
+
+# OPTIONAL. Whether or not mysql connection should stay open
+AuthCookieSql_DBPersistent    On
+
+# OPTIONAL. Additional sql for WHERE clause
+# AuthCookieSql_AdditionalSql 
+
+# MANDATORY. Database configuration.
+AuthCookieSql_DBhost          localhost
+AuthCookieSql_DBuser          user
+AuthCookieSql_DBpassword      passwd
+AuthCookieSql_DBName          auth
+
+# MANDATORY. Database table name.
+AuthCookieSql_DBtable         cookie_mysql_sessions 
+
+# MANDATATORY. Database table fields configuration.
+# The following 3 lines are needed. Change their value
+# to the fieldnames of your table. 
+AuthCookieSql_SessnameField   sessname
+AuthCookieSql_SessvalField    sesskey
+AuthCookieSql_UsernameField   username
+
+# OPTIONAL. If you set a cookie name with the following
+# option, only for cookies with that name will be accepted
+# from the browser and are compared with the contents
+# of the database. If you omit this line, all cookies sent
+# by the browser are compared with the cookies stored
+# in the database.
+AuthCookieSql_CookieName      sessid
+
+# OPTIONAL. With the following option, you can check the 
+# age of the received cookies from the browser. If the time
+# (unix timestamp) stored in the database is older than the
+# actual time on the server this module is running on, the
+# cookie is not accepted. Set the name of the column which
+# contains the expiry information here. 
+AuthCookieSql_ExpiryField     expiry
+
+# OPTIONAL. You can set the remote IP in the database from
+# where the browser may access the site. The cookie sent by
+# the browser is accepted only if the remoteip stored in the
+# remoteip_row is equal to the IP the browser connects from.
+# CookieAuth_RemoteIPField    remoteip
+</IfModule>

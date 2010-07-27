@@ -11,3 +11,8 @@ schemes.
 2. Provide a session-cookie generating login/logout system that is 
 meant to work with Apache 2.x mod_auth_cookie_mysql module.  A simplified
 build of that project is also included.
+
+For more information on mod_auth_cookie_mysql, see original author's 
+site:
+
+http://home.digithi.de/digithi/dev/mod_auth_cookie_mysql/
