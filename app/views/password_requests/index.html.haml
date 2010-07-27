@@ -1,0 +1,31 @@
+%h2 Retrieve forgotten user names and passwords
+-if @succeeded
+  %p 
+    The login information for Kentfield School District websites was sent to 
+    your registered email address.
+-elsif @failed
+  %p 
+    The email address you entered (
+    = @failed
+    ) was not registered in our database.
+    Please contact 
+    %a{:href => "mailto:webmaster@kentfieldschools.org"} webmaster@kentfieldschools.org
+    if you believe you entered the email address correctly, or 
+    click 
+    %a{:href => url_for(:password_requests, :new)} here
+    to try again.
+-elsif @internal_error
+  %p 
+    The email message could not be sent at this time.  Please try again later.
+  %p= @internal_error
+-else
+  %p 
+    Click 
+    %a{:href => url_for(:password_requests, :new)} here
+    to have login information for Kentfield School District websites 
+    sent to your registered email address.</p>
+%p
+  Return to
+  %a{:href => "http://ps.kentfieldschools.org"} PowerSchool Parent Portal
+  | 
+  %a{:href => "http://www.kentfieldschools.org"} Main Kentfield School District website<
