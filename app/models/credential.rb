@@ -27,7 +27,7 @@ class Credential
 
   def authenticated?(password)
     !password.nil? && !self.salt.nil? && !self.encrypted_password.nil? && 
-      self.encrptyed_password == Credential.encrypt_password(password.downcase, self.salt)
+      self.encrypted_password == Credential.encrypt_password(password.downcase, self.salt)
   end
   
   def self.authenticated?(username, password)

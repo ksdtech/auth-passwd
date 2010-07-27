@@ -11,6 +11,7 @@ PasswdApp.controllers :login do
   
   post :login, :map => '/login' do
     @login = params[:login]
+    @url = params[:url]
     if AuthCookieSession.authenticated?(@login, params[:password])
       sesskey  = SecureRandom.hex(16)
       remoteip = env['REMOTE_ADDR']
