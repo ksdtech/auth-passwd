@@ -1,0 +1,15 @@
+-if @missing
+  %p{:style => "color:red"} Please supply a valid email address and try again.
+%h2 Retrieve forgotten user names and passwords
+%p 
+  Provide your email address in the form below, 
+  then click the "Send user names and passwords" button. If your
+  email address is on file, we will send login information for
+  all your Kentfield School District accounts.
+%form{:name => "password_request_form", :action => url_for(:password_requests, :new), :method => "post"}
+  %p
+    %label{:for => "password_request_email"} Email address:
+    %br
+    %input{:type => "text", :id => "password_request_email", :name => "email", :size => "40", :maxlength => "60"}
+  %p
+    %input{:type => "submit", :id => "password_request_submit", :name => "submit", :value => "Send user names and passwords"}

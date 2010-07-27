@@ -1,0 +1,35 @@
+development: &default
+  cookie_name: _sess
+  cookie_domain: example.com
+  cookie_path: /
+  encryption_key: averylongandhardtoguesskey
+  default_url: http://example.com/protected
+  logout_link: "<a href='http://www.example.com/'>Welcome Page</a>"
+  smtp:
+    address: "smtp.gmail.com"
+    port: 587
+    user_name: <username>@gmail.com'
+    password: '<password>'
+    authentication: :plain
+    enable_starttls_auto: true    
+  datamapper:
+    adapter: mysql
+    database: dbname_development
+    username: dbuser
+    password: dbpass
+production:
+  <<: *default
+  base_url: http://localhost:9292/
+  base_path: /
+  datamapper:
+    adapter: mysql
+    database: dbname_production
+    username: dbuser
+    password: dbpass
+test:
+  <<: *default
+  base_url: http://localhost:9292/
+  base_path: /
+  datamapper:
+    adapter: sqlite3
+    database: db/test.db
