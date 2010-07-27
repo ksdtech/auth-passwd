@@ -48,7 +48,7 @@
 #include <string.h>             /* for strncmp */
 #include <mysql.h>              /* PFZ: for mysql-specific code */
 
-module AP_MODULE_DECLARE_DATA MODULE_NAME_module;
+module AP_MODULE_DECLARE_DATA auth_cookie_mysql_module;
 
 /********************************************************************************
  *                      public function declarations                            *
@@ -128,7 +128,7 @@ static void auth_cookie_sql2_child_init(apr_pool_t *p, server_rec *s) {
 /* send a redirect to the browser */
 /* PFZ: changed 'r' query param to 'url' */
 static int do_redirect(request_rec *r) {
-    auth_cookie_sql2_config_rec *conf = ap_get_module_config(r->per_dir_config, &MODULE_NAME_module);
+    auth_cookie_sql2_config_rec *conf = ap_get_module_config(r->per_dir_config, &auth_cookie_mysql_module);
     char *redirect = apr_psprintf(r->pool, "%s?url=%s", conf->failureurl, r->uri);
                                                                                             
     if (redirect) {
@@ -245,7 +245,7 @@ static int check_valid_cookie(request_rec *r, auth_cookie_sql2_config_rec *conf)
 
 /* try to authenticate the user */
 static int auth_cookie_sql2_authenticate_user (request_rec *r) {
-    auth_cookie_sql2_config_rec *conf = ap_get_module_config(r->per_dir_config, &MODULE_NAME_module);
+    auth_cookie_sql2_config_rec *conf = ap_get_module_config(r->per_dir_config, &auth_cookie_mysql_module);
     
     if (! conf->activated) {
         // not active
@@ -349,7 +349,7 @@ static void auth_cookie_sql2_register_hooks(apr_pool_t *p) {
 }
 
 /* module data */
-module AP_MODULE_DECLARE_DATA MODULE_NAME_module = {
+module AP_MODULE_DECLARE_DATA auth_cookie_mysql_module = {
     STANDARD20_MODULE_STUFF,
     auth_cookie_sql2_create_auth_dir_config,    /* per-directory config creater */
     NULL,                                       /* dir merger --- default is to override */
