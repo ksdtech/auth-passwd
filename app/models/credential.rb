@@ -30,4 +30,9 @@ class Credential
     !password.nil? && !self.salt.nil? && !self.encrypted_password.nil? && 
       self.encrptyed_password == Credential.encrypt_password(password.downcase, self.salt)
   end
+  
+  def self.authenticated?(username, password)
+    cred = Credential.first(:username => username)
+    cred && cred.authenticated?(password)
+  end
 end
