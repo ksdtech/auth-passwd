@@ -3,8 +3,8 @@
 Gemfile.lock
 *.tmproj
 *.db
+*.conf
 app_config.yml
-database.rb
 log/**/*
 tmp/**/*
 bin/*
