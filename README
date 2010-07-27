@@ -1,0 +1,13 @@
+auth-passwd
+
+This is a mishmash project built on the Padrino Sinatra framework.
+
+There are a couple of functions that it serves:
+
+1. Provide a "forgot-password" system for a rather complicated set of
+credentials for three related websites, each with different password
+schemes.
+
+2. Provide a session-cookie generating login/logout system that is 
+meant to work with Apache 2.x mod_auth_cookie_mysql module.  A simplified
+build of that project is also included.
