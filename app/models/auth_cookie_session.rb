@@ -8,7 +8,7 @@ class AuthCookieSession
   
   class << self
     def authenticated?(login, password)
-      login.length >= 4 && password.length >= 4
+      Credential.authenticated?(login, password)
     end
 
     def purge_stale_sessions

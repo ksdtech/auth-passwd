@@ -16,7 +16,7 @@ Bundler.require(:default, PADRINO_ENV.to_sym)
 puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
 
 configatron.configure_from_yaml(File.join(PADRINO_ROOT, 'config', 'app_config.yml'), :hash => PADRINO_ENV)
-DATAMAPPER_OPTS = ENV['DATABASE_URL'] || configatron.datamapper.to_hash
+DATAMAPPER_OPTS = ENV['DATABASE_URL'] || configatron.datamapper
 puts "=> DataMapper setup for #{DATAMAPPER_OPTS.inspect}"
 
 Padrino.load!

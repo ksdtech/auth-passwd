@@ -1,8 +1,3 @@
-# We will permit access from local networks OR if cookie
-# is present.
-Satisfy Any
-Allow from 192.168.0.0/16
-
 # MANDATORY. Tells apache that only valid users are
 # allowed. Please refer to the apache manual to get more
 # information about possible options for "require".
@@ -31,7 +26,7 @@ AuthCookieSql_DBpassword      passwd
 AuthCookieSql_DBName          auth
 
 # MANDATORY. Database table name.
-AuthCookieSql_DBtable         cookie_mysql_sessions 
+AuthCookieSql_DBtable         auth_cookie_sessions 
 
 # MANDATATORY. Database table fields configuration.
 # The following 3 lines are needed. Change their value
