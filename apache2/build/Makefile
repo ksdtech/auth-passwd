@@ -15,12 +15,13 @@ APACHECTL=apachectl
 
 #   PFZ: get mysql client files
 MYSQL_INCLUDES=`mysql_config --include`
-MYSQL_LIBS=`mysql_config --libs`
+MYSQL_LIBS=`mysql_config --libs_r`
 
 #   additional defines, includes and libraries
 #DEFS=-Dmy_define=my_value
 INCLUDES=$(MYSQL_INCLUDES)
 LIBS=$(MYSQL_LIBS)
+LT_LDFLAGS=$(MYSQL_LIBS)
 
 #   the default target
 all: local-shared-build
