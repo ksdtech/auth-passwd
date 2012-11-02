@@ -1,4 +1,3 @@
-#= Credential
 class Credential
   include DataMapper::Resource
   include ::Encryption
