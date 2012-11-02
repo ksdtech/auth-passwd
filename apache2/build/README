@@ -1,0 +1,14 @@
+
+This is the README of mod_auth_cookie_mysql2, version 0.9a
+
+This archive contains 6 files:
+
+ * README                        The file you are actually reading
+ * INSTALL                       Quick installation guide
+ * Makefile                      The Makefile to compile this module
+ * mod_auth_cookie_sql2.c        Database-independent code
+ * mod_auth_cookie_sql2.h        Database-independent header file
+ * mod_auth_cookie_sql2_mysql.c  Database-dependent code for mysql
+
+Please visit http://home.digithi.de/digithi/dev/mod_auth_cookie_mysql for
+updated and more documentation.
